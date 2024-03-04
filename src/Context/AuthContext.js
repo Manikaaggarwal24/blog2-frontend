@@ -3,34 +3,40 @@ import axios from "axios";
 
 export const AuthContext = React.createContext();
 
-const AuthContextProvider = props => {
-
-  const [activeUser, setActiveUser] = useState({})
+const AuthContextProvider = (props) => {
+  const [activeUser, setActiveUser] = useState({});
   const [config, setConfig] = useState({
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },
-  })
-
+  });
 
   useEffect(() => {
-
     const controlAuth = async () => {
       try {
-        const { data } = await axios.get("https://blog2-backend-api.onrender.com/auth/private", config);
-        setActiveUser(data.user)
-      }
-      catch (error) {
-
+        const token = localStorage.getItem("authToken");
+        if (token) {
+          const { data } = await axios.get(
+            "https://blog2-backend-api.onrender.com/auth/private",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setActiveUser(data.user);
+        } else {
+          throw new Error("No auth token found");
+        }
+      } catch (error) {
+        console.error("Authentication error:", error.message);
         localStorage.removeItem("authToken");
-
-        setActiveUser({})
+        setActiveUser({});
       }
     };
-    controlAuth()
-
-  }, [])
+    controlAuth();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ activeUser, setActiveUser, config, setConfig }}>
