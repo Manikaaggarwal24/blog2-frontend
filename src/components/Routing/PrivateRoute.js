@@ -20,6 +20,9 @@ const PrivateRoute =( ) => {
             authorization: `Bearer ${localStorage.getItem("authToken")}`,
             },
         };
+
+
+        
         try {
             const { data } = await axios.get("https://blog2-backend-api.onrender.com/auth/private", config); 
 
