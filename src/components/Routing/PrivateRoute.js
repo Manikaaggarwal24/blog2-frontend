@@ -17,7 +17,7 @@ const PrivateRoute =( ) => {
         const config = {
             headers: {
             "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
             },
         };
 
