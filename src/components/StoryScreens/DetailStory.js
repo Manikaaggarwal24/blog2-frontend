@@ -211,7 +211,7 @@ const DetailStory = () => {
                   {activeUser && story.author &&
                     story.author._id === activeUser._id ?
                     <div className="top_story_transactions">
-                      <Link className='editStoryLink' to={`/story/${story.slug}/edit`}>
+                      <Link className='editStoryLink' to={`https://blog2-backend-api.onrender.com/story/${story.slug}/edit`}>
                         <FiEdit />
                       </Link>
                       <span className='deleteStoryLink' onClick={handleDelete}>
@@ -234,7 +234,7 @@ const DetailStory = () => {
               <div className='story-content' >
 
                 <div className="story-banner-img">
-                  <img src={`/storyImages/${story.image}`} alt={story.title} />
+                  <img src={`https://blog2-backend-api.onrender.com/storyImages/${story.image}`} alt={story.title} />
 
                 </div>
 
@@ -295,7 +295,7 @@ const DetailStory = () => {
                       {activeUser &&
                         story.author._id === activeUser._id ?
                         <div className="delete_or_edit_story  ">
-                          <Link className='editStoryLink' to={`/story/${story.slug}/edit`}>
+                          <Link className='editStoryLink' to={`https://blog2-backend-api.onrender.com/story/${story.slug}/edit`}>
                             <p>Edit Story</p>
                           </Link>
                           <div className='deleteStoryLink' onClick={handleDelete}>

@@ -21,7 +21,7 @@ const PrivateRoute =( ) => {
             },
         };
         try {
-            const { data } = await axios.get("https://blog2-backend-api.onrender.com/auth/private", config); 
+            const { data } = await axios.get("/auth/private", config); 
 
             setAuth(true)
             setActiveUser(data.user)
