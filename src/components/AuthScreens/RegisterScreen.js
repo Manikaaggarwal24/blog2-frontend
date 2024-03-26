@@ -24,7 +24,7 @@ const RegisterScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "/auth/register",
+        "https://blog2-backend-api.onrender.com/auth/register",
         {
           username,
           email,
